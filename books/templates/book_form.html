@@ -1,0 +1,54 @@
+{% extends 'layout.html' %} {% block content %}
+<main class="create-book layout">
+  <div class="container">
+    <div class="layout__boxTitle">
+        <a href="{{request.META.HTTP_REFERER}}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 32 32">
+                <title>arrow-left</title>
+                <path d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"></path>
+            </svg>
+        </a>
+        <h3>Back</h3>
+    </div>
+    <div class="layout__box">
+      <h3>Create/Update Book</h3>
+    </div>
+  </div>
+  <div class="layout__body">
+    <form class="form" action="" method="POST">
+      {% csrf_token %}
+
+      <!-- Display form element generated from BookForm-->
+      <div class="form__group">
+        <label for="book_title">Book Title</label>
+        {{form.title}}
+      </div>
+
+      <div class="form__group">
+        <label for="book_author">Book Author</label>
+        {{form.author}}
+      </div>
+
+      <div class="form__group">
+        <label for="book_year">Year released</label>
+        {{form.year}}
+      </div>
+
+      <div class="form__group">
+        <label for="book_rating">Book Rating</label>
+        {{form.rating}}
+      </div>
+
+      <div class="form__group">
+        <label for="book_description">Book Description</label>
+        {{form.description}}
+      </div>
+
+      <div class="form__action">
+        <button class="btn btn--main" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</main>
+{% endblock content %}

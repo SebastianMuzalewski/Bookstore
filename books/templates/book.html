@@ -1,0 +1,26 @@
+<!-- Inherit from layout template -->
+{% extends "layout.html" %}
+
+<!-- Override content block in layout -->
+{% block content %}
+
+<h1>{{page_title}}</h1>
+
+<!-- Display book attributes from book model -->
+<h2>Book: {{ book.id }}</h2>
+<h3>Title: {{ book.title }}</h3>
+<h4>Author: {{ book.author }}</h3>
+<h4>Year Released: {{ book.year }}</h3>
+<h4>Rating: {{ book.rating }}</h3>
+<h4>Description: {{ book.description }}</h3>
+<h4>Posted by: {{ book.posted_by }}</h3>
+<h5>Posted on: {{ book.created_at }}</h3>
+<h5>Last Updated: {{ book.updated_at }}</h3>
+
+<!-- Only show edit and delete links if user posted book -->
+{% if book.posted_by == request.user %}
+    <h5><a href="{% url 'update_book' book.id %}">Edit Book</a></h5>
+    <h5><a href="{% url 'delete_book' book.id %}">Delete Book</a></h5>
+{% endif %}
+
+{% endblock %}
